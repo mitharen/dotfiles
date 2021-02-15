@@ -102,9 +102,6 @@ unsetopt beep
 bindkey -e
 # End of lines configured by zsh-newuser-install
 
-# use .config for spacemacs
-export SPACEMACSDIR=$HOME/.config/spacemacs/
-
 # tmux plugin customization
 ZSH_TMUX_AUTOSTART=true
 ZSH_TMUX_CONFIG=$HOME/.config/tmux/tmux.conf
@@ -142,12 +139,15 @@ unsetopt BEEP
 alias less="less -Q"
 export PAGER="less -Q"
 
-# fix less dotfiles
+# fix dotfiles locations
+eval $(dircolors $HOME/.config/dircolors/.dircolors)
+export GRADLE_USER_HOME=$HOME/.local/share/gradle
+export IPYTHONDIR=$HOME/.config/ipython
+export _JAVA_OPTIONS=-Djava.util.prefs.userRoot=$HOME/.config/java
 export LESSKEY=$HOME/.config/less/lesskey
 export LESSHISTFILE=$HOME/.cache/less/history
-
-# fix dircolors dotfiles
-eval $(dircolors $HOME/.config/dircolors/.dircolors)
+export SPACEMACSDIR=$HOME/.config/spacemacs
+export WORKON_HOME=$HOME/.local/share/virtualenvs
 
 # allow alt+left/right for back/forward word
 bindkey "^[[1;3C" forward-word
